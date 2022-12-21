@@ -1,0 +1,11 @@
+# Ignore the data directory
+data/
+
+__pycache__/
+*.pyc
+
+*.DS_Store
+*.Zone.Identifier
+
+.venv
+playground.ipynb
