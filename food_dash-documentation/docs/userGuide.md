@@ -51,15 +51,15 @@ Returns an output of a DataFrame that is ready to be fed into the functions used
 
 #### dashboard_creation
 
-##### dashboard_creation.loading_counties_file()
+##### <sub>dashboard_creation.loading_counties_file()</sub>
 
 Returns the county shapefiles. 
 
-##### dashboard_creation.green_red_col_scale()
+##### <sub>dashboard_creation.green_red_col_scale()</sub>
 
 Returns the scale of which we use to visualize our dashboard. The scale ranges from 0 to 1, with 0 being dark-red in color to 1 being green in color. Here 0 is assumed to be the worst and 1 is assumed to be the best. 
 
-##### dashboard_creation.show_and_save_plot(save_name,attribute_name,cc_scale,data, counties)
+##### <sub>dashboard_creation.show_and_save_plot(save_name,attribute_name,cc_scale,data, counties)</sub>
 
 Returns a Dashboard and saves the dashboard based on the assigned ``save_name``
 
