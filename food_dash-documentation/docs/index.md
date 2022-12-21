@@ -42,7 +42,7 @@ Here, we provide a quick overview of how these function works and how you can qu
 
 Do note that the datasets that are fed into the ``preparing_data_for_viz`` function assumes that the columns for your dates are "date_range_start" and the columns for the counties are called "Counties". 
 
-To see how each specific function works, refer to the *User List* for tab. 
+To see how each specific function works, refer to the **User Guide** tab. 
 
 ```python
 # executing the creation of dashboard here. 
