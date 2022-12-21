@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>User Guide - food_dash documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "User Guide";
+        var mkdocs_page_input_path = "userGuide.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> food_dash documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">User Guide</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#clean_normalize_data">clean_normalize_data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#clean_normalize_datacleaning_datadata">clean_normalize_data.cleaning_data(data)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#clean_normalize_datamerging_datadf1df2">clean_normalize_data.merging_data(df1,df2)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#clean_normalize_datacalculating_reliancedataunhealthy_col_namehealthy_col_namedesired_col_name">clean_normalize_data.calculating_reliance(data,unhealthy_col_name,healthy_col_name,desired_col_name)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#clean_normalize_datapreparing_data_for_vizdf1df2unhealthy_col_namehealthy_col_namedesired_col_name">clean_normalize_data.preparing_data_for_viz(df1,df2,unhealthy_col_name,healthy_col_name,desired_col_name)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dashboard_creation">dashboard_creation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#dashboard_creationloading_counties_file">dashboard_creation.loading_counties_file()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dashboard_creationgreen_red_col_scale">dashboard_creation.green_red_col_scale()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dashboard_creationshow_and_save_plotsave_nameattribute_namecc_scaledata-counties">dashboard_creation.show_and_save_plot(save_name,attribute_name,cc_scale,data, counties)</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bdd/">Behavior Driven Development</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">food_dash documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>User Guide</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="user-guide">User Guide</h3>
+<h4 id="clean_normalize_data">clean_normalize_data</h4>
+<h5 id="clean_normalize_datacleaning_datadata"><sub>clean_normalize_data.cleaning_data(data)</sub></h5>
+<p>Reads the data with the aggregated visit counts and converts the columns into its neccessary data type. 
+Returns the DataFrame with columns converted to its appropriate types and inappropriate values fixed. This includes converting counties to strings, filling them up with 0's if they are 4-digits long, and converting dates into datetimes. </p>
+<ul>
+<li><strong>data</strong>(<em>pandas.DataFrame</em>) - this arguement takes a dataFrame with at least 3 columns (1) the aggregated visitation counts for each county on each month, (2) the county FIPS code, and (3) the month (or date). It assumes that dates are titled <code>date_range_start</code>, and counties are titled <code>County</code>. </li>
+</ul>
+<h5 id="clean_normalize_datamerging_datadf1df2"><sub>clean_normalize_data.merging_data(df1,df2)</sub></h5>
+<p>Merges the specified 2 dataFrames based on <code>Month</code> and <code>County</code> set as the index of the dataFrames. </p>
+<p>Returns 1 merged DataFrame containing attributes from both the DataFrames, based on each <code>Month</code> on each <code>County</code></p>
+<ul>
+<li>
+<p><strong>df1</strong>(<em>pandas.dataFrame</em>) - this arguement takes a first dataFrame with at least 3 columns (1) the aggregated visitation counts for each county on each month, (2) the county FIPS code, and (3) the month (or date). It assumes that the columns contains the appropriate data types. Feed it into the <code>cleaning_data</code> if the columns do not contain the appropriate data types. </p>
+</li>
+<li>
+<p><strong>df2</strong>(<em>pandas.dataFrame</em>) - same as <code>df1</code></p>
+</li>
+</ul>
+<h5 id="clean_normalize_datacalculating_reliancedataunhealthy_col_namehealthy_col_namedesired_col_name"><sub>clean_normalize_data.calculating_reliance(data,unhealthy_col_name,healthy_col_name,desired_col_name)</sub></h5>
+<p>Takes a DataFrame with one column as the <code>unhealthy_col_name</code> and another as the <code>healthy_col_name</code>. </p>
+<p>Returns DataFrame with the computed <em>unhealthy reliance index</em> for each specified <code>County</code> on each <code>Month</code> - calculated by <code>unhealthy_col_name</code>/(<code>unhealthy_col_name</code>+<code>healthy_col_name</code>). </p>
+<ul>
+<li>
+<p><strong>data</strong>(<em>pandas.dataFrame</em>) - takes a dataFrame which contains the following columns: <code>County</code>, <code>Month</code>, the specified <code>unhealthy_col_name</code>, and <code>unhealthy_col_name</code></p>
+</li>
+<li>
+<p><strong>unhealthy_col_name</strong>(<em>str</em>) - Name of the column of which we wish to identify as our unhealthy element, of which we will calculate our "unhealthy reliance index" by. </p>
+</li>
+<li>
+<p><strong>healthy_col_name</strong>(<em>str</em>) - Name of the column of which we wish to identify as our healthy element. </p>
+</li>
+<li>
+<p><strong>desired_col_name</strong>(<em>str</em>) - Column Name of our specified "unhealthy reliance index", to which the data frame of our output will reflect  </p>
+</li>
+</ul>
+<h5 id="clean_normalize_datapreparing_data_for_vizdf1df2unhealthy_col_namehealthy_col_namedesired_col_name"><sub>clean_normalize_data.preparing_data_for_viz(df1,df2,unhealthy_col_name,healthy_col_name,desired_col_name)</sub></h5>
+<p>Combines all the above functions together (ie <code>calculating_reliance()</code>, <code>merging_data()</code>,<code>cleaning_data()</code>). </p>
+<p>Returns an output of a DataFrame that is ready to be fed into the functions used to construct the Dashboard. </p>
+<ul>
+<li><strong>df1</strong>(<em>pandas.dataFrame</em>): Refer to <code>merging_data</code> above</li>
+<li><strong>df2</strong>(<em>pandas.dataFrame</em>): Refer to <code>merging_data</code> above</li>
+<li><strong>unhealthy_col_name</strong>(<em>str</em>): Refer to <code>preparing_data_for_viz</code> above. </li>
+<li><strong>healthy_col_name</strong>(<em>str</em>): Refer to <code>preparing_data_for_viz</code> above. </li>
+<li><strong>desired_col_name</strong>(<em>str</em>): Refer to <code>preparing_data_for_viz</code> above. </li>
+</ul>
+<h4 id="dashboard_creation">dashboard_creation</h4>
+<h5 id="dashboard_creationloading_counties_file">dashboard_creation.loading_counties_file()</h5>
+<p>Returns the county shapefiles. </p>
+<h5 id="dashboard_creationgreen_red_col_scale">dashboard_creation.green_red_col_scale()</h5>
+<p>Returns the scale of which we use to visualize our dashboard. The scale ranges from 0 to 1, with 0 being dark-red in color to 1 being green in color. Here 0 is assumed to be the worst and 1 is assumed to be the best. </p>
+<h5 id="dashboard_creationshow_and_save_plotsave_nameattribute_namecc_scaledata-counties">dashboard_creation.show_and_save_plot(save_name,attribute_name,cc_scale,data, counties)</h5>
+<p>Returns a Dashboard and saves the dashboard based on the assigned <code>save_name</code></p>
+<ul>
+<li>
+<p><strong>save_name</strong>(<em>str</em>): Name and folder location of where we wish to save our Dashboard</p>
+</li>
+<li>
+<p><strong>attribute_name</strong>(<em>str</em>): Column of the variable of interest that we wish to spatio-temporally visualize in our dashboard. </p>
+</li>
+<li>
+<p><strong>cc_scale</strong>(<em>dict</em>): dictionary of the color scales and its corresponding values which we wish to have displayed on our dashboard. </p>
+</li>
+<li>
+<p><strong>data</strong>(<em>pandas.DataFrame</em>): dataFrame of our data to be used to construct our dashboard. </p>
+</li>
+<li>
+<p><strong>counties</strong>(<em>json shpfile</em>): json shapefile of our counties. </p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../bdd/" class="btn btn-neutral float-right" title="Behavior Driven Development">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../bdd/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
