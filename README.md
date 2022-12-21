@@ -1,3 +1,5 @@
+# Summary Guide
+
 A summary of the food_dash is provided here 
 
 The complete documentation could be found at https://cja5553.github.io/food_dash/ 
