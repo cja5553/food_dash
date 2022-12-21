@@ -1,0 +1,6 @@
+site_name: food_dash documentation
+nav:
+  - Home: index.md
+  - User Guide: userGuide.md
+  - Behavior Driven Development: bdd.md
+theme: readthedocs
